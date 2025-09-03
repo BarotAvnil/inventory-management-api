@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: inventory-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    buildCommand: ""
+    startCommand: ""
+    healthCheckPath: /api/dashboard/health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:8080
+      - key: ASPNETCORE_HTTP_PORTS
+        value: "8080"
+    disk:
+      name: inventory-data
+      mountPath: /app/Data
+      sizeGB: 1

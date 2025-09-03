@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "InventoryApi_NoAudit",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List Products",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5083/api/products"
+      }
+    },
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Sample Product\", \"categoryId\": 1, \"unitId\": 1, \"supplierId\": 1, \"price\": 199.99, \"stockQuantity\": 10, \"isActive\": true}"
+        },
+        "url": "http://localhost:5083/api/products"
+      }
+    },
+    {
+      "name": "Stock In",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"quantity\": 5, \"remarks\": \"Restock\"}"
+        },
+        "url": "http://localhost:5083/api/products/1/stock-in?userId=1"
+      }
+    },
+    {
+      "name": "Stock Out",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"quantity\": 2, \"remarks\": \"Sale\"}"
+        },
+        "url": "http://localhost:5083/api/products/1/stock-out?userId=1"
+      }
+    },
+    {
+      "name": "Transactions",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5083/api/stocktransactions"
+      }
+    }
+  ]
+}
